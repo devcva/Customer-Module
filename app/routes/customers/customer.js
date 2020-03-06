@@ -3,10 +3,17 @@ import {set} from '@ember/object';
 import A from '@ember/array';
 export default Route.extend({
     
-    model()
+    model(params)
     {
         this.controllerFor('customers').showSingleObj("cuslist");
-        return this.controllerFor('customers').singleObj;
+        let currentObj=this.controllerFor('customers').arrObj;
+        let returnObj=null;
+        currentObj.forEach(element => {
+            if (element.name==params.customer_id) {
+               returnObj=element;
+            }
+        });
+        return returnObj;
     },
     actions:
     {

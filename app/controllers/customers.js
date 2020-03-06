@@ -4,9 +4,9 @@ import {A} from '@ember/array';
 
 
 export default Controller.extend({
+
     cuslist:true,
     cusCount:null,
-    singleObj:null,
     arrObj:A(
         [
             {
@@ -39,11 +39,11 @@ export default Controller.extend({
                }  
         ]),
     myObj1:A([]),
-    
 
     showSingleObj(prop)
     {
        set(this,prop,false);
+
     } ,
      
  
@@ -52,8 +52,7 @@ export default Controller.extend({
     {
         singleCus(obj)
         {
-            this.singleObj=obj;
-            this.transitionToRoute('customers.customer');
+            this.transitionToRoute('customers.customer',obj.name);
         }    
     }
 });
