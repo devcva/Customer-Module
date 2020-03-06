@@ -1,31 +1,44 @@
-<h1>Customer Module</h1>
-
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Customer Module</span>
+</nav>
 
 
 {{#if this.cuslist}}
-<h2 class="cuslist-head">Customer List</h2>
 
-<div class="cuslisttable">
-<table >
-    
-    {{#each arrObj as |obj|}}
-    <tr onclick={{action "showSingleObj" obj}} >
-        <td>{{obj.name}}</td>
-        <td>{{obj.displayname}}</td>
-        <td>{{obj.phonenumber}}</td>
-    </tr>
-    {{else}}
-    <h5>Customer not available! Please Create Customer</h5>
-    {{/each}}
-
-</table>
+<div class="container mb-3 mt-3">
+    {{#link-to 'customers.new'}}
+    <button type="button" class="btn btn-primary">Add Customer</button>
+    {{/link-to}}
 </div>
 
 
-{{#link-to 'customers.new'}}
-<button class="add-button">Add Customer</button>
-{{/link-to}}
-
+<div class="container">
+<table class="table table-hover">
+    <caption>List of Customers: {{arrObj.length}}</caption>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Customer Name</th>
+      <th>Display Name</th>
+      <th>Phone number</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each arrObj as |obj index|}}
+            <tr {{action "singleCus" obj}}>
+                    <th>{{sum index 1}}</th>
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.displayname}}</td>
+                    <td>{{obj.phonenumber}}</td>
+            </tr>
+     {{else}}
+     <div class="alert alert-warning" role="alert">
+    Customer not available! Please Create Customer
+    </div>
+    {{/each}}
+  </tbody>
+</table>
+</div>
 {{/if}}
-
 {{outlet}}
+

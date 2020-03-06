@@ -1,11 +1,9 @@
-
 import Route from '@ember/routing/route';
 import EmberObject,{set} from '@ember/object';
-export default Route.extend({
-    namee:'ssssss',
-    
+export default Route.extend({    
     model()
     {
+        
         set(this.controllerFor('customers'),'cuslist',false);
         
         let obj={
@@ -19,9 +17,7 @@ export default Route.extend({
     actions:
     {
         addCus(name,displayname,phonenumber,clearField)
-        {      
-            
-             
+        {        
             this.controllerFor('customers').arrObj.pushObject(EmberObject.create({"name":name,"displayname":displayname,"phonenumber":phonenumber}));
             
             set(clearField,"name","");

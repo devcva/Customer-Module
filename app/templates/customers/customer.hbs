@@ -1,32 +1,31 @@
 
-
-<button class="back-button" {{action "gotoback" compstatus}}>Back</button>
-    
-<div class="show-single-cus">
-    <div class="cus-head">
-        <h3>Customer: {{this.model.name}}</h3>
-    </div>
-    <div class="single-cus">
-        <div class="cus-det">
-             <span>Name</span>
-             <span>{{this.model.name}}</span>
-        </div>
-
-         <div class="cus-det">
-             <span>Display Name</span>
-             <span>{{this.model.displayname}}</span>
-        </div>
-
-         <div class="cus-det">
-             <span>Phone Number</span>
-             <span>{{this.model.phonenumber}}</span>
-        </div>
-
-    </div>
+<div class="container mb-3 mt-3">
    
-
+    <button type="button" class="btn btn-primary" {{action "gotoback" compstatus}}>Back</button>
 </div>
 
-
-
 {{outlet}}
+
+
+{{#if this.model}} 
+
+<div class="row justify-content-lg-center">
+<div class="col-lg-6">
+<div class="card container text-center">
+  <div class="card-header h3">
+   Customer Name: {{this.model.displayname}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Name     :          {{this.model.name}}</h5>
+    <h5 class="card-title">Display Name:{{this.model.displayname}}</h5>
+    <h5 class="card-title">Phone Number:{{this.model.phonenumber}}</h5>
+  </div>
+</div>
+</div>
+</div>
+{{else}}
+<div class="alert alert-warning container" role="alert">
+   Requesting  customer not available
+    </div>
+    
+{{/if}}
