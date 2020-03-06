@@ -8,7 +8,7 @@
 <div class="cuslisttable">
 <table >
     
-    {{#each arrObj as |obj|}}
+    {{#each this.model as |obj|}}
     <tr onclick={{action "showSingleObj" obj}} >
         <td>{{obj.name}}</td>
         <td>{{obj.displayname}}</td>
