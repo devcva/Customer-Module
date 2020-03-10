@@ -1,0 +1,19 @@
+{{outlet}}
+{{name}}
+
+
+<Input @type='text' @value={{name}} />
+
+<button {{action 'addRec' name}}>Add Student</button>
+
+
+{{#each rec as |obj|}}
+
+<h3>{{obj.name}}</h3>
+
+{{/each}}
+
+<Input @type='text' @value={{findname}} />
+
+<button {{action 'findRec' findname}}>Find Student</button>
+
